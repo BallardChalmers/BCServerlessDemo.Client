@@ -1,0 +1,110 @@
+<header class="topbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+
+                <img src="assets/icons/serverless.png" style="height:50px;" alt="homepage" class="dark-logo" />
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/drivers" routerLinkActive="active">Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/journeys" routerLinkActive="active">Journeys</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="/organisations" routerLinkActive="active">Organisations</a>
+                      </li>
+                  </ul>
+                  <ul class="navbar-nav my-lg-0">
+                        <li>
+                            <span> Demonstration of Azure Serverless by </span>
+                            <img src="assets/icons/bclogo.png" style="height:50px;" alt="homepage" class="dark-logo" />
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <fa-icon title="View profile" [icon]="['fas', 'user']"></fa-icon>
+                                <fa-icon *ngIf='!isOnline()' (click)="login()" title="Login" [icon]="['fas', 'sign-in-alt']"></fa-icon>
+                                <fa-icon *ngIf='isOnline()' (click)="logout()" title="Logout" [icon]="['fas', 'sign-out-alt']"></fa-icon>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul *ngIf="!!user" class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-text">
+                                                <h4>{{user?.displayName}}</h4>
+                                                <p class="text-muted">{{user?.mail}}</p>
+                                                <p class="text-muted">{{user.appRoleDisplayName}}</p>
+                                                <p *ngIf="!!user.organisationName" class="text-muted">{{user.organisationName}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a (click)="logout()">
+                                            <i class="fa fa-power-off"></i> Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+              </nav>
+
+
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+        <!-- ============================================================== -->
+        <!-- Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-header">
+            <!-- Logo icon -->
+            <b>
+                <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-light" href="javascript:void(0)" (click)="changeShowStatus()">
+                    <i class="icon-menu"></i>
+                </a>
+            </b>
+            <!--End Logo icon -->
+            <!-- Logo text -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-collapse">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+            
+            <ul class="navbar-nav mr-auto mt-md-0 "></ul>
+            <ul class="navbar-nav mr-auto mt-md-0 " style="display: none">
+                <!-- This is  -->
+                <li class="nav-item">
+                    <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)">
+                        <i class="ti-menu"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)" (click)="changeShowStatus()">
+                        <i class="icon-arrow-left-circle"></i>
+                    </a>
+                </li>
+
+                <!-- ============================================================== -->
+                <!-- End Comment -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Messages -->
+                <!-- ============================================================== -->
+            </ul>
+            <!-- ============================================================== -->
+            <!-- User profile and search -->
+            <!-- ============================================================== -->
+            
+        </div>
+    </nav>
+</header>

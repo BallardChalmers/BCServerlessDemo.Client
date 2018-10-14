@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3 *ngIf="orgName">Journeys</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="d-flex flex-row-reverse">
+            <div>
+                <app-inline-search (onSearch)="search($event)" (onCancel)="cancelSearch()" [(searchText)]="searchText">
+                </app-inline-search>
+            </div>
+            <div *ngIf="canAddEdit" class="top-button-container">
+                <button class="btn btn-primary" type="button" (click)="openAddJourneyModal()">
+                    <i title="Add a journey" class="fa fa-plus" aria-hidden="true"></i> Add
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="journey-container">
+    
+    <app-viewport [viewport]="viewableJourneys" cssClass="list-group-item border-left-0 border-right-0 flex-column" (onLoadMore)="loadMore($event)">
+        <ng-template let-item>
+            <div class="row">
+                    <h1>{{item.edit}}</h1>
+                <div id="journey-name" class="col-md">
+                    <div class="d-flex flex-wrap">
+                        <div class="p-2 mr-2">
+                            <h4>{{item.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-journey-display *ngIf="!item.edit" [journey]="item" (delete)="deleteJourney($event)" [canEdit]="canAddEdit"></app-journey-display>
+            <app-journey-edit *ngIf="item.edit" [journey]="item" (delete)="deleteJourney($event)"  [canEdit]="canAddEdit"></app-journey-edit>
+        </ng-template>
+    </app-viewport>
+</div>

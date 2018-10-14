@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12 {{cssClass}}">
+                <div class="card flex-md-row mb-8 shadow-sm h-md-250">
+                    <div class="card-body row align-items-start">
+                        <div class="col-md-9">
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">From {{journey.pickupAddress?.name}} to
+                                    {{journey.dropoffAddress?.name}}</a>
+                            </h3>
+                            <div class="mb-1 text-muted">{{journey.pickupDate | date: 'd MMM yyyy hh:mm'}} to
+                                {{journey.dropoffDate | date: 'd MMM yyyy hh:mm'}}</div>
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="edit()">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <div style="height:250px;width:250px;">
+                                <x-map [Options]="_options" [Latitude]='journey.pickupLatitude' [Longitude]='journey.pickupLongitude'>
+                                    <x-map-marker [Latitude]="journey.pickupLatitude" [Longitude]="journey.pickupLongitude"
+                                        [Title]="'Pickup location'" [IconInfo]="_iconInfoPickup">
+                                    </x-map-marker>
+                                    <x-map-marker [Latitude]="journey.dropoffLatitude" [Longitude]="journey.dropoffLongitude"
+                                        [Title]="'Dropoff location'" [IconInfo]="_iconInfoDropoff">
+                                    </x-map-marker>
+                                </x-map>
+                            </div>
+                        </div>
+                        <p class="card-text mb-auto">{{journey.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

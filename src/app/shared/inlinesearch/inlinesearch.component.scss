@@ -1,0 +1,37 @@
+@import '../../../assets/scss/variable';
+
+.inline-search{
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    input {
+        width: 200px;
+        border-radius: 100px;
+        font-size: 14px;
+        transition: 0.5s ease-in;
+        &:focus {
+            width: 240px;
+        }
+    }
+    .srh-btn {
+        position: absolute;
+        top: 8px;
+        cursor: pointer;
+        background: $white;
+        width: 15px;
+        height: 15px;
+        right: 10px;
+        font-size: 14px;
+    }
+    .cnl-btn {
+        position: absolute;
+        top: 8px;
+        cursor: pointer;
+        background: $white;
+        color: $red;
+        width: 15px;
+        height: 15px;
+        right: 25px;
+        font-size: 14px;
+    }
+}

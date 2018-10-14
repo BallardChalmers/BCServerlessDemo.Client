@@ -1,0 +1,11 @@
+<span *ngIf="reason">
+    <span [ngbTooltip]="tipReason">
+        <i id="ragstatus" class="fa fa-2x" attr.aria-label="{{ragStatus[status]}}" [ngClass]="{'red': status === ragStatus.Red,  'amber': status === ragStatus.Amber, 'green': status === ragStatus.Green, 'fa-times-circle': status === ragStatus.Red,  'fa-exclamation-circle': status === ragStatus.Amber, 'fa-check-circle': status === ragStatus.Green}"></i>
+    </span>
+</span>
+<span *ngIf="!reason">
+    <i id="ragstatus" class="fa fa-2x" attr.aria-label="{{ragStatus[status]}}" [ngClass]="{'red': status === ragStatus.Red, 'amber': status === ragStatus.Amber, 'green': status === ragStatus.Green, 'fa-times-circle': status === ragStatus.Red,  'fa-exclamation-circle': status === ragStatus.Amber, 'fa-check-circle': status === ragStatus.Green}"></i>
+</span>
+<ng-template #tipReason>
+    {{reason}}
+</ng-template>

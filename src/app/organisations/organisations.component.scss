@@ -1,0 +1,49 @@
+@import "../../assets/scss/variable";
+
+.organisation-container {
+    word-wrap: break-word;
+}
+.avatar-sm{
+    width: 50px;
+}
+.avatar-lg{
+    width: 95px;
+}
+.avatar-status{
+    border-radius: 100%;
+    padding-left: 2px;
+}
+.avatar-opaque{
+    opacity: 0.2;
+}
+
+.file-selected {
+    background-color: #dadada !important;
+}
+
+.file-not-selected {
+    background-color: #fff !important;
+}
+
+.my-drop-zone {
+    border: dotted 2px #dadada;
+    min-height: 100px;
+    min-width: 104px;
+}
+.nv-file-over { border: dotted 2px red; } /* Default class applied to drop zones on over */
+
+.avatar-container {
+    min-width: 104px;
+}
+
+.thin-card {
+    width: 150px;
+}
+
+.approved-journey-lookup {
+    padding-top: 20px;
+
+    input {
+        min-width: 400px;
+    }
+}

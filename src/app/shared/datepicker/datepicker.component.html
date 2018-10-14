@@ -1,0 +1,13 @@
+<div class="input-group">
+    <input [ngClass]="{'form-control' : true, 'form-control-sm': smallDisplay}" placeholder="dd/mm/yyyy" name="shared-datepicker"
+        [(ngModel)]="model" [required]="required ? 'required' : null" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="onChange($event)"
+        [minDate]="minDate" [maxDate]="maxDate" #datePicker="ngModel">
+    <div [ngClass]="{'py-2': !smallDisplay }" class="input-group-addon px-1" (click)="d.toggle()">
+        <i class="fa fa-calendar"></i>
+    </div>
+</div>
+<div *ngIf="datePicker.invalid && (datePicker.dirty || datePicker.touched)">
+    <div class="alert alert-danger alert" [ngClass]="{ 'alert-sm': smallDisplay}">
+        Please enter a date
+    </div>
+</div>

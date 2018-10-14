@@ -1,0 +1,144 @@
+@import '../../assets/scss/variable';
+
+.add-journey {
+    .modal-header {
+        a {
+            margin: 0 0 0 auto;
+            cursor: pointer;            
+        }
+        a:hover {
+            color:#009efb;
+        }
+        .close {
+            margin: -1rem -1rem -1rem 0;
+        }
+    }
+
+    input[type=checkbox] {
+        width: 38px;
+    }
+}
+
+.journey-details {
+    .header{
+        margin-bottom: 20px;
+        button {
+            font-size: 18px;
+        }
+        .card {
+            margin-bottom: 0;
+        }
+    }
+
+    .nav-wrapper{
+        margin-bottom: 20px;
+    }
+
+    ul {
+        li {
+            .btn {
+                .fa-3x{
+                font-size: 3em;
+                }
+            }
+
+            .btn-circle {
+                opacity: 1; 
+                width:80px;
+                height:80px;
+                text-align:center;
+                font-size:12px;
+                border-radius:50%;
+                &:hover{
+                    background-color: #ccc;
+                    opacity: 1; 
+                }            
+            }
+
+            .btn-success {
+                &:hover{
+                    background-color: $light-success;
+                    opacity: 1; 
+                }
+            }
+
+            p {
+                margin-top:4px;
+            }
+        }
+    }
+}
+
+.add-item {
+    margin-top: 20px;
+}
+
+.journey-summary {
+    .summary-section {
+        margin-bottom: 20px;
+    }
+}
+
+.journey-risk {
+    margin-bottom: 30px;
+}
+
+.journey-learners {
+    hr.dotted {
+        border-top: dashed 1px;
+    }
+    .form-inline {
+        p {
+            display: flex;
+            width: auto;
+        }
+    }
+
+    .certificate-section {
+        p.form-control-plaintext {
+            width: auto;
+            margin-left: 10px;
+        }
+    }
+}
+
+.journey-evaluations {
+    .evaluations-chart {
+        padding-bottom: 10px;
+    }
+    .eval-section{
+        padding-bottom: 20px;
+    }
+}
+
+.evaluation-edit{
+ 
+    .star {
+      font-size: 1.5rem;
+      color: #b0c4de;
+    }
+    .filled {
+      color: #1e90ff;
+    }
+    .heart {
+      position: relative;  
+      display: inline-block;
+      font-size: 3rem;
+      color: #d3d3d3;
+    }
+    .full {
+      color: red;
+    }
+    .half {
+      position: absolute;
+      display: inline-block;
+      overflow: hidden;
+      color: red;
+    }  
+}
+
+.journey-materials {
+    .fa-file-text-o {
+        cursor: pointer;
+    }
+}

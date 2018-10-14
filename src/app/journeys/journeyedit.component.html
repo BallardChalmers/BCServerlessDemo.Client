@@ -1,0 +1,185 @@
+<form #journeyEditForm="ngForm" (ngSubmit)="save()">
+    <ng-template #val_empty>
+        <div>
+
+        </div>
+    </ng-template>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="summary-section">
+                <form>
+                    <fieldset>
+                        <legend>Journey
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editJourney = true;">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Pickup location</label>
+                            <div class="col-sm-7">
+                                    <input required id="pickupLocation" name="pickupLocation" type="text" class="form-control form-control-sm"
+                                    [(ngModel)]="currentPickupAddress" />
+                                <p class="form-control-plaintext form-control-sm" id="journeyName">{{journey.pickupAddress?.name}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Dropoff location</label>
+                            <div class="col-sm-7">
+                                    <input required id="dropoffLocation" name="dropoffLocation" type="text" class="form-control form-control-sm"
+                                    [(ngModel)]="currentDropoffAddress" />
+                                <p class="form-control-plaintext form-control-sm" id="journeyName">{{journey.dropoffAddress?.name}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Pickup Date</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm" id="journeyName">{{journey.pickupDate | date: 'd MMM yyyy hh:mm'}}</p>
+                                <shared-datepicker dateValue={{journey.pickupDate}} [required]="true"></shared-datepicker>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Dropoff Date</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm" id="journeyName">{{journey.dropoffDate | date: 'd MMM yyyy hh:mm'}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Pickup location</label>
+                            <div class="col-sm-7">
+                                    <div style="height:250px;width:250px;">
+                                            <x-map [Options]="_options" [Latitude]='journey.pickupLatitude' [Longitude]='journey.pickupLongitude'
+                                            (click)='changeMarker()'>
+                                                    <x-map-marker 
+                                                    [Latitude]="journey.pickupLatitude" 
+                                                    [Longitude]="journey.pickupLongitude"
+                                                    [Title]="'Pickup location'"
+                                                    [IconInfo]="_iconInfoPickup">
+                                                  </x-map-marker>
+                                                  <x-map-marker 
+                                                    [Latitude]="journey.dropoffLatitude" 
+                                                    [Longitude]="journey.dropoffLongitude"
+                                                    [Title]="'Dropoff location'"
+                                                    [IconInfo]="_iconInfoDropoff">
+                                                  </x-map-marker>
+                                              </x-map>
+                                        </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="summary-section">
+                <form>
+                    <fieldset>
+                        <legend>Notes
+                            <button *ngIf="canEdit && notesEdit == false" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editNotes()">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                            <button class="btn btn-primary btn-sm" type="button" title="Save" (click)="submitJourney()">
+                                <i class="fa fa-floppy-o"></i> Save
+                            </button>
+                            <button *ngIf="notesEdit == true" class="btn btn-secondary btn-sm" type="button" title="Cancel" (click)="notesEdit = false;">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <div class="col-sm-12" *ngIf="notesEdit == false" [innerHTML]="journey.notes">
+                            </div>
+                            <div class="col-sm-12" *ngIf="notesEdit">
+                                <quill-editor [style]="{height: '150px'}" [modules]="quillModules" id="journeyNotes" name="journeyNotes" [(ngModel)]="journeyNotes"></quill-editor>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="summary-section">
+                <form *ngIf="editLocation == false">
+                    <fieldset class="form-group">
+                        <legend>Location
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editLocation = true;">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Training organisation*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.organisation?.name}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Company*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.company}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Venue*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venue}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Venue contact*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactName}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactEmail}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactPhone}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Journey contact*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactName}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactEmail}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactPhone}}</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <!--<app-location-edit *ngIf="editLocation == true" [journey]="journey" (cancelEdit)="editLocation = false;" (locationUpdate)="locationUpdate($event)"></app-location-edit>-->
+            </div>
+            <div class="summary-section">
+                <form *ngIf="editingChecklist == false">
+                    <fieldset>
+                        <legend>Checklist
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editChecklist();">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div *ngFor="let listItem of journey.checklist" class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">{{getChecklistItemName(listItem.item.id)}}</label>
+                            <div class="col-sm-7">
+                                <app-display-bool [boolValue]="listItem.dateChecked != undefined" [textValue]="listItem.dateChecked | date: 'd MMM yyyy'"></app-display-bool>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <form *ngIf="editingChecklist">
+                    <fieldset>
+                        <legend>Checklist
+                            <button class="btn btn-primary btn-sm" type="button" title="Save" (click)="saveChecklist()">
+                                <i class="fa fa-floppy-o"></i> Save
+                            </button>
+                            <button class="btn btn-secondary btn-sm" type="button" title="Save" (click)="editingChecklist = false;">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
+                        </legend>
+                        <div *ngFor="let listItem of journeyChecklist" class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">{{getChecklistItemName(listItem.item.id)}}</label>
+                            <div class="col-sm-7">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox{{listItem.item.id}}" name="checkbox{{listItem.item.id}}" class="form-check-input" [ngModel]="listItem.dateChecked != undefined"
+                                        (click)="checked(listItem.item.id)" />
+                                    <label class="form-check-label" for="checkbox{{listItem.item.id}}">{{listItem.dateChecked
+                                        | date: 'd MMM yyyy'}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</form>

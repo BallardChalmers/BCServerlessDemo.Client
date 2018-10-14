@@ -1,0 +1,63 @@
+<form #driverEditForm="ngForm" (ngSubmit)="save()">
+    <ng-template #val_empty>
+        <div>
+
+        </div>
+    </ng-template>
+    <div class="row">
+        <div class="col-md-1 avatar-container">
+            <div>
+                <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver, 'file-selected': uploader.queue.length, 'file-not-selected': !uploader.queue.length}"
+                    (fileOver)="fileOverBase($event)" (click)="openFileDialog()" [uploader]="uploader" class="font-medium-5 text-uppercase grey my-drop-zone">
+                    <div class="avatar-status">
+                        <img *ngIf="photoUrl != undefined" [ngClass]="{'avatar-opaque': uploader.queue.length}" alt=""
+                            class="avatar-lg rounded-circle" [src]="photoUrl" />
+                    </div>
+                    <input type="file" ng2FileSelect [uploader]="uploader" style="display: none" #fileInput />
+                    <p>Click to upload file or drag and drop image over the area. Image uploaded on save.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="font-medium col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Name*</label>
+                        <div class="col-sm-3">
+                            <input required id="firstName" name="firstName" type="text" class="form-control form-control-sm"
+                                [(ngModel)]="driver.givenName" />
+                        </div>
+                        <div class="col-sm-4">
+                            <input required id="lastName" name="lastName" type="text" class="form-control form-control-sm"
+                                [(ngModel)]="driver.surname" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Description</label>
+                        <div class="col-sm-7">
+                            <input id="description" name="description" type="text" class="form-control form-control-sm"
+                                [(ngModel)]="driver.description" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-md button-container d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="!driverEditForm.valid">
+                        <i title="Save" class="fa fa-floppy-o"></i> Save
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md button-container d-flex justify-content-center">
+                    <button class="btn btn-secondary" type="button" (click)="editCancelled.emit()">
+                        <i title="Cancel" class="fa fa-times"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

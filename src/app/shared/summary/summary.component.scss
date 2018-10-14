@@ -1,0 +1,19 @@
+@import "../../../assets/scss/variable";
+
+.summary {
+    a {
+        display: block;
+        color: $bodytext;
+        :hover{
+            color: $danger; 
+            background: #fff;
+        }
+    } 
+    i {
+        padding-right: 10px;
+    }
+    .card-title{
+        display: inline-block;
+    }
+
+}

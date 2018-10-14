@@ -1,0 +1,9 @@
+<!--<input *ngIf="boolValue == undefined" type="text" readonly class="form-control-plaintext form-control-sm" value="Not set" />-->
+<span *ngIf="boolValue == true">
+    <i class="fa fa-check-circle"></i>
+    <span *ngIf="!!textValue" class="form-control-sm">{{textValue}}</span>
+</span>
+<span *ngIf="boolValue == false">
+    <i class="fa fa-times-circle"></i>
+    <span *ngIf="!!textValue" class="form-control-sm">{{textValue}}</span>
+</span>

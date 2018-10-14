@@ -1,0 +1,133 @@
+@import "../../assets/scss/variable";
+
+.avatar-container {
+    padding-right: 10px;
+}
+
+.card {
+    position: relative;
+}
+
+.card #ragstatus {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+}
+
+.card-body {   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dashboardbackground {
+    background: url('/assets/icons/homeslider.jpg');
+    min-height: 480px;
+    background-size: cover;
+}
+
+.dashboardCard {
+    margin-top: 50px;
+}
+
+.dashboard-messages {
+    .message-box {
+        .message-widget {
+            .user-img {
+                width: 10px;
+                margin: 0 10px 15px 10px;
+            }
+            a {
+                padding: 9px 0px;
+                color: $bodytext;             
+                :hover{
+                   color: $danger;
+                   cursor: pointer; 
+                }  
+            }  
+        }
+    }
+}
+
+.upcoming-journeys {
+    .message-box {
+        .message-widget {
+            a {
+                padding: 9px 0px;
+                color: $bodytext;
+                .user-img {
+                    margin: 0 0 15px 0;
+                 }
+                :hover{
+                   color: $danger; 
+                }  
+            }  
+        }
+    }
+}
+
+.approvals {
+    .message-box {
+        .message-widget {
+            a {
+                padding: 9px 0px;
+                color: $bodytext;
+                .user-img {
+                    margin: 0 10px 0 0;
+                 }
+                :hover{
+                   color: $danger; 
+                   cursor: pointer; 
+                }  
+                .mail-contnet {
+                    h5 { 
+                        margin: -5px 0 0 0;
+                    }
+                }
+            }  
+        }
+    }
+}
+
+.event-reminder {
+    h4{
+        color: $danger;
+    }
+    .message-box {
+        .message-widget {            
+            .content {
+                padding: 9px 0px;         
+                color: $bodytext;
+                .user-img {
+                    width: 45px;
+                    position: relative;
+                    display: inline-block;           
+                    margin: 0 0 15px 0;
+                 }
+                 .mail-contnet {
+                    display: inline-block;
+                    width: 75%;
+                    vertical-align: middle;                     
+                    .mail-desc{
+                        font-size: 12px;
+                        display: block;
+                        margin: 1px 0;
+                        text-overflow: ellipsis;
+                        overflow: hidden;          
+                        white-space: nowrap;
+                    }
+                    .time{
+                        font-size: 16px;               
+                        font-weight: 500;
+                        display: block;
+                        margin: 1px 0;
+                        text-overflow: ellipsis;
+                        overflow: hidden;               
+                        white-space: nowrap;
+                    }
+                }
+            }
+                 
+        }
+    }
+}

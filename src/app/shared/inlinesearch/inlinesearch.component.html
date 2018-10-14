@@ -1,0 +1,5 @@
+<div class="inline-search">
+    <input class="form-control" (keydown.enter)="$event.preventDefault()" (keyup.enter)="search()" [placeholder]="placeHolder" type="text" name="searchText" [(ngModel)]="searchText">
+    <a class="srh-btn" (click)="search()"><i class="ti-search"></i></a>
+    <a [ngClass]="{'d-none': !showCancel}" class="cnl-btn" (click)="cancel()"><i class="ti-trash"></i></a>
+</div>

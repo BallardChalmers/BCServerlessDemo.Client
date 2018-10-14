@@ -1,0 +1,174 @@
+<div *ngIf="journey != undefined" class="journey-summary">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="summary-section">
+                <form *ngIf="editJourney == false">
+                    <fieldset>
+                        <legend>Journey
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editJourney = true;">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Journey Name</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm" id="journeyName">{{journey.name}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Date*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.startDate | date: 'd MMM yyyy'}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Time*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.startTime}} to {{journey.endTime}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Trainer</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.trainer.name}}</p>
+                                <p *ngIf="!!journey.trainer.email" class="form-control-plaintext form-control-sm">{{journey.trainer.email}}</p>
+                                <p *ngIf="!!journey.trainer.phone" class="form-control-plaintext form-control-sm">{{journey.trainer.phone}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Journey Type*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.journeyTypeName}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Invoice number</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.invoiceNumber}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">PO Number</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.poNumber}}</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <!--<app-journey-edit *ngIf="editJourney == true" [journey]="journey" (cancelEdit)="editJourney = false;" (journeyUpdate)="journeyUpdate($event)"></app-journey-edit>-->
+            </div>
+            <div class="summary-section">
+                <form>
+                    <fieldset>
+                        <legend>Notes
+                            <button *ngIf="canEdit && notesEdit == false" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editNotes()">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                            <button *ngIf="notesEdit == true" class="btn btn-primary btn-sm" type="button" title="Save" (click)="saveNotes()">
+                                <i class="fa fa-floppy-o"></i> Save
+                            </button>
+                            <button *ngIf="notesEdit == true" class="btn btn-secondary btn-sm" type="button" title="Cancel" (click)="notesEdit = false;">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <div class="col-sm-12" *ngIf="notesEdit == false" [innerHTML]="journey.notes">
+                            </div>
+                            <div class="col-sm-12" *ngIf="notesEdit">
+                                <quill-editor [style]="{height: '150px'}" [modules]="quillModules" id="journeyNotes" name="journeyNotes" [(ngModel)]="journeyNotes"></quill-editor>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="summary-section">
+                <form *ngIf="editLocation == false">
+                    <fieldset class="form-group">
+                        <legend>Location
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editLocation = true;">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Training organisation*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.organisation?.name}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Company*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.company}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Venue*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venue}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Venue contact*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactName}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactEmail}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.venueContactPhone}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">Journey contact*</label>
+                            <div class="col-sm-7">
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactName}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactEmail}}</p>
+                                <p class="form-control-plaintext form-control-sm">{{journey.location.journeyContactPhone}}</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <!--<app-location-edit *ngIf="editLocation == true" [journey]="journey" (cancelEdit)="editLocation = false;" (locationUpdate)="locationUpdate($event)"></app-location-edit>-->
+            </div>
+            <div class="summary-section">
+                <form *ngIf="editingChecklist == false">
+                    <fieldset>
+                        <legend>Checklist
+                            <button *ngIf="canEdit" class="btn btn-primary btn-sm" type="button" title="Edit" (click)="editChecklist();">
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                        </legend>
+                        <div *ngFor="let listItem of journey.checklist" class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">{{getChecklistItemName(listItem.item.id)}}</label>
+                            <div class="col-sm-7">
+                                <app-display-bool [boolValue]="listItem.dateChecked != undefined" [textValue]="listItem.dateChecked | date: 'd MMM yyyy'"></app-display-bool>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <form *ngIf="editingChecklist">
+                    <fieldset>
+                        <legend>Checklist
+                            <button class="btn btn-primary btn-sm" type="button" title="Save" (click)="saveChecklist()">
+                                <i class="fa fa-floppy-o"></i> Save
+                            </button>
+                            <button class="btn btn-secondary btn-sm" type="button" title="Save" (click)="editingChecklist = false;">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
+                        </legend>
+                        <div *ngFor="let listItem of journeyChecklist" class="form-group row">
+                            <label class="col-sm-5 text-right control-label col-form-label col-form-label-sm">{{getChecklistItemName(listItem.item.id)}}</label>
+                            <div class="col-sm-7">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox{{listItem.item.id}}" name="checkbox{{listItem.item.id}}" class="form-check-input" [ngModel]="listItem.dateChecked != undefined"
+                                        (click)="checked(listItem.item.id)" />
+                                    <label class="form-check-label" for="checkbox{{listItem.item.id}}">{{listItem.dateChecked
+                                        | date: 'd MMM yyyy'}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

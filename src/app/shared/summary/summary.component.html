@@ -1,0 +1,32 @@
+<div class="card summary">
+    <a *ngIf="link !== ''" [routerLink]="link">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <i *ngIf="iconClass" class="fa {{iconClass}} fa-2x text-right" aria-hidden="true"></i>
+                    <h4 class="card-title">
+                        {{total}} {{section}}
+                    </h4>
+                </div>
+            </div>
+            <div *ngIf="showPercentage">
+                <span class="text-success">{{getPercentage()}}% {{percentageText}}</span>
+                <ngb-progressbar [showValue]="false" type="success" [value]="getPercentage()"></ngb-progressbar>
+            </div>
+        </div>
+    </a>
+    <div *ngIf="link == ''" class="card-body" [title]="title">
+        <div class="row">
+            <div class="col-md-12">
+                <i *ngIf="iconClass" class="fa {{iconClass}} fa-2x text-right" aria-hidden="true"></i>
+                <h4 class="card-title">
+                    {{total}} {{section}}
+                </h4>
+            </div>
+        </div>
+        <div *ngIf="showPercentage">
+            <span class="text-success">{{getPercentage()}}% {{percentageText}}</span>
+            <ngb-progressbar [showValue]="false" type="success" [value]="getPercentage()"></ngb-progressbar>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div><div [popover]="dateRangePopover"><label>{{headerText}}</label>&nbsp;<i class="fa fa-calendar" aria-hidden="true"></i></div></div>
+<div><label>From date:</label> {{fromDate | date: "d MMM yyyy"}}</div>
+<div><label>To date:</label> {{toDate | date: "d MMM yyyy"}}</div>
+<popover-content #dateRangePopover placement="left" [animation]="true" [closeOnClickOutside]="true" >
+  <ngb-datepicker #dp [(ngModel)]="selectedDate" name="rangeDatePicker" (ngModelChange)="onDateChange($event)" [minDate]="minDate" [maxDate]="maxDate"
+    [displayMonths]="1" [dayTemplate]="t">
+    </ngb-datepicker>
+    <ng-template #t let-date="date" let-focused="focused">
+            <span class="custom-day"
+            [class.focused]="focused"
+            [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+            [class.faded]="isHovered(date) || isInside(date)"
+            (mouseenter)="hoveredDate = date"
+            (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+      </span>
+  </ng-template>
+</popover-content>
