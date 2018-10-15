@@ -12,7 +12,7 @@ export const routes: Routes = [
         children: [
             /*{ path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },*/
             { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
-            // { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+            { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
             { path: 'journeys', loadChildren: './journeys/journeys.module#JourneysModule' },
             // { path: 'reports', loadChildren: './reports/reports.module#ReportsModule' },
             { path: 'organisations', loadChildren: './organisations/organisations.module#OrganisationsModule' },
