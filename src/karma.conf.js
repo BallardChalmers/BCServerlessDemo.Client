@@ -25,7 +25,7 @@ module.exports = function (config) {
       environment: 'dev',
       sourcemaps: false
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

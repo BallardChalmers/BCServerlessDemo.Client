@@ -10,7 +10,7 @@
     "build:deptest": "ng build --target=production --environment=deptest",
     "build:stage": "ng build --target=production --environment=stage",
     "test": "ng test --browsers=Chrome --sourceMap=false",
-    "test-single-headless": "ng test --single-run=true --browsers=ChromeHeadless --reporters=progress,junit --code-coverage",
+    "test-single-headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
