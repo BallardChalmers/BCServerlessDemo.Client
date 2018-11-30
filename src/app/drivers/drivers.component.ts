@@ -146,6 +146,14 @@ export class DriverComponent implements OnInit {
         });
     }
 
+    isClearFilter(): boolean {
+        return true;
+    }
+
+    canAddEdit(): boolean {
+        return true;
+    }
+
     formatMatches = (value: any) => value.name || '';
 /*
     searchCourse = (text$: Observable<string>) =>

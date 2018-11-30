@@ -17,6 +17,7 @@ export class UserManagementComponent implements OnInit {
     viewableUsers = new ViewportCollectionService<AppUser>();
     canAddEdit = false;
     orgName: string;
+    searchText: string;
 
     constructor(private roleCheck: RoleCheck,
         private route: ActivatedRoute,
@@ -34,4 +35,15 @@ export class UserManagementComponent implements OnInit {
 
     }
 
+    search(event: any): void {
+
+    }
+
+    cancelSearch(): void {
+        this.searchText = '';
+    }
+
+    loadMore(event: any): void {
+
+    }
 }

@@ -31,6 +31,9 @@ export class JourneyEditComponent implements OnInit {
     status = ApprovalStatus;
     currentPickupAddress = '';
     currentDropoffAddress = '';
+    notesEdit = false;
+    editLocation = false;
+    editingChecklist = false;
 
     _markerTypeId = MarkerTypeId;
     _options: IMapOptions = {
@@ -114,5 +117,9 @@ export class JourneyEditComponent implements OnInit {
 
     changeMarker() {
         console.log('Hmmm');
+    }
+
+    save() {
+
     }
 }

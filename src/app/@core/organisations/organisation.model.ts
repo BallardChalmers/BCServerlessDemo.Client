@@ -13,4 +13,5 @@ export class Organisation extends BaseEntity {
     proprietor: string;
     isDisabled: boolean;
     isNew: boolean;
+    description: string;
 }

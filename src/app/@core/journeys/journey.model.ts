@@ -31,4 +31,5 @@ export class Journey extends BaseEntity {
     passengerCount: number;
     journeyDuration: number;
     isNew: boolean;
+    description: string;
 }

@@ -149,6 +149,12 @@ export class AddJourneyComponent implements OnInit {
         this.driversView = take(this.drivers, this.driverPageSize);
     }
 
+    filterJourneys(event: any) {
+    }
+
+    canceljourneyFilter() {
+
+    }
 
     canSave() {
         const canSave = this.journey.pickupDate !== undefined &&

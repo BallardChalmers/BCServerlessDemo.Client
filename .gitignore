@@ -37,3 +37,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/TESTS-HeadlessChrome_70.0.3538_(Windows_10.0.0).xml

@@ -1,22 +1,19 @@
 <form class="add-journey" #addjourneyForm="ngForm" (ngSubmit)="save()">
     <div class="modal-header">
-        <h4 class="modal-title">Add <span *ngIf="this.journey.isCombijourney">combi</span> journey</h4>
-        <a *ngIf="!this.journey.isCombijourney" (click)="addCombijourney()">
-            <i class="fa fa-navicon"></i> Add combi journey</a>
-        <a *ngIf="this.journey.isCombijourney" (click)="addSinglejourney()">
-            <i class="fa fa-minus"></i> Add single journey</a>
+        <h4 class="modal-title">Add journey</h4>
+        
         <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <div *ngIf="productSpecifics != undefined" class="list-group-item form-group">
+        <div class="list-group-item form-group">
             <div class="row doc-panel-heading">
                 <div class="col-md font-medium">
                     Approved journeys
                 </div>
                 <div>
-                    <app-inline-search (onSearch)="filterjourneys($event)" (onCancel)="canceljourneyFilter()" placeHolder="Filter by name or desc">
+                    <app-inline-search (onSearch)="filterJourneys($event)" (onCancel)="canceljourneyFilter()" placeHolder="Filter by name or desc">
                     </app-inline-search>
                 </div>
             </div>
@@ -24,7 +21,7 @@
 
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" [disabled]="!canSave() || isTrainerBusy || endTimeInvalid">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!canSave() || endTimeInvalid">Save</button>
         <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Close</button>
     </div>
 </form>

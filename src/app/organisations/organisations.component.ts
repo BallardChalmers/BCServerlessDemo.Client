@@ -23,6 +23,8 @@ export class OrganisationComponent implements OnInit {
     organisations: Organisation[];
     currentSearch = '';
     pageSize = 25;
+    isClearFilter = true;
+    canAddEdit = true;
 
     constructor(private organisationService: OrganisationService,
         private gridQueryStateService: GridQueryStateService,

@@ -4,4 +4,5 @@ export class AdminOverview {
     driversNotExpiring: number;
     orgsNotExpiring: number;
     orgsTotal: number;
+    vehiclesTotal: number;
 }

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-9">
         <div class="row">
-            <div class="col-md-12 {{cssClass}}">
+            <div class="col-md-12 ">
                 <div class="card flex-md-row mb-8 shadow-sm h-md-250">
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-primary">{{driver.organisation.name}}</strong>
@@ -10,8 +10,8 @@
                         </h3>
                         <div class="mb-1 text-muted">Nov 12</div>
                         <p class="card-text mb-auto">{{driver.description}}</p>
-                        <button class="btn btn-primary" type="button" (click)="startEdit.emit()" [disabled]="driver.editDisabled"
-                                [title]="driver.editDisabled ? 'Can not edit drivers pending approval' : 'Edit'">
+                        <button class="btn btn-primary" type="button" (click)="startEdit.emit()" [disabled]="driver.edit"
+                                [title]="driver.edit ? 'Can not edit drivers pending approval' : 'Edit'">
                                 <fa-icon title="Edit driver" [icon]="['fas', 'edit']"></fa-icon>
                                 <span>Edit</span>
                             </button>
