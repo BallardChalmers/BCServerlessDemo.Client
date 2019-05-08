@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
-import { AppUser } from '../../@core/user/AppUser.model';
+import { AppUser } from '../../@core/user/appUser.model';
 import { MsalService } from '../../@core/user/msal.service';
 import { UserManagementService } from '../../@core/user/userManagement.service';
 import { RoleCheck } from '../../@core/user/roleCheck.service';

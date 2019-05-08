@@ -7,7 +7,7 @@ import { Action, Role } from '../enum';
 import { OrganisationService } from '../organisations/organisation.service';
 import { DriverService } from '../../@core/drivers/driver.service';
 import { LogService } from '../utilities/log.service';
-import { AppUser } from './AppUser.model';
+import { AppUser } from './appUser.model';
 import { MsalService } from './msal.service';
 import { RoleModel } from './role.model';
 import { UserManagementService } from './userManagement.service';

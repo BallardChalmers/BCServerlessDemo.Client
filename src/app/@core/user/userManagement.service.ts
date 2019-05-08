@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { LogService } from '../utilities/log.service';
 import { AppCreateUser } from './appCreateUser.model';
-import { AppUser } from './AppUser.model';
+import { AppUser } from './appUser.model';
 import { MsalService } from './msal.service';
 
 @Injectable()

@@ -3,7 +3,7 @@ import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { every, filter, find, forEach, map, some, sumBy, take, union } from 'lodash';
 import * as moment from 'moment';
 
-import { Journey } from '../@core/journeys/Journey.model';
+import { Journey } from '../@core/journeys/journey.model';
 import { JourneyService } from '../@core/journeys/journey.service';
 import { Action, ApprovalStatus } from '../@core/enum';
 import { OrganisationService } from '../@core/organisations/organisation.service';

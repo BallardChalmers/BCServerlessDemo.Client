@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
-import { JourneyDisplay } from '../@core/journeys/journeydisplay.model';
+import { JourneyDisplay } from '../@core/journeys/journeyDisplay.model';
 import { JourneyDetailsComponent } from './journeyDetails.component';
 import {BrowserModule} from '@angular/platform-browser';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
