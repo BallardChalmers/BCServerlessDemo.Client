@@ -4,5 +4,8 @@ export const environment = {
   tenant: 'tenantToReplace',
   clientID: 'clientIDToReplace',
   signUpSignInPolicy: 'policyToReplace',
-  b2cScopes: ['clientIDToReplace']
+  b2cScopes: ['clientIDToReplace'],
+  appInsights: {
+    instrumentationKey: 'f01e9ecc-db4f-4a88-8c48-afc03ad69719'
+  },
 };
