@@ -25,14 +25,14 @@ export class UserManagementService {
 
   getAllUsers(): Observable<AppUser[]> {
     return this.http.get<AppUser[]>(this.baseUrl)
-      .pipe(tap(r => console.log(`Response for GET ${this.baseUrl}:  `, r)));
+      .pipe(tap(r => this.logService.log(`Response for GET ${this.baseUrl}:  `, r)));
   }
 
   searchUsers(searchTerm: string): Observable<AppUser[]> {
     const url = `${this.baseUrl}?SearchTerm=${searchTerm}`;
 
     return this.http.get<AppUser[]>(url)
-      .pipe(tap(r => console.log(`Response for GET ${url}:  `, r)));
+      .pipe(tap(r => this.logService.log(`Response for GET ${url}:  `, r)));
   }
 
   getUser(): Observable<AppUser> {
@@ -43,7 +43,7 @@ export class UserManagementService {
     const msalUser = this.msalService.getUser();
     const url = `${this.baseUrl}?userId=${msalUser.displayableId}`;
     return this.http.get<AppUser[]>(url)
-      .pipe(tap(r => console.log(`Response for GET ${url}:  `, r)))
+      .pipe(tap(r => this.logService.log(`Response for GET ${url}:  `, r)))
       .map(response => {
         const users = new Array<AppUser>();
         response.forEach(d => users.push(Object.assign(new AppUser(), d)));
@@ -56,7 +56,7 @@ export class UserManagementService {
     const url = `${this.baseUrl}?organisationId=${organisationId}`;
 
     return this.http.get<AppUser[]>(url)
-      .pipe(tap(r => console.log(`Response for GET ${url}:  `, r)))
+      .pipe(tap(r => this.logService.log(`Response for GET ${url}:  `, r)))
       .map(response => {
         const users = new Array<AppUser>();
         response.forEach(d => users.push(Object.assign(new AppUser(), d)));
@@ -101,7 +101,7 @@ export class UserManagementService {
   postDemo(): void {
     const url = `${environment.apiEndpoint}/Demo`;
     this.http.get(url).subscribe(response => {
-      console.log('Demo response: ' + response);
+      this.logService.log('Demo response: ' + response);
     });
   }
 }

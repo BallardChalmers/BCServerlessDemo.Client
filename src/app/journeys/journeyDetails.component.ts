@@ -8,6 +8,7 @@ import { JourneyService } from '../@core/journeys/journey.service';
 import { Action, ApprovalAction, ApprovalStatus } from '../@core/enum';
 import { RoleCheck } from '../@core/user/roleCheck.service';
 import { StartupService } from '../@core/utilities/startup.service';
+import { LogService } from '../@core/utilities/log.service'
 import {MapModule, MapAPILoader, MarkerTypeId, IMapOptions,
     IBox, IMarkerIconInfo, WindowRef, DocumentRef, MapServiceFactory,
     BingMapAPILoaderConfig, BingMapAPILoader, MapTypeId, BingMapService
@@ -54,12 +55,13 @@ export class JourneyDetailsComponent implements OnInit {
     constructor(
         private journeyService: JourneyService,
         private roleCheck: RoleCheck,
+        private logService: LogService,
         private startupService: StartupService) {
 
     }
 
     ngOnInit(): void {
-        
+
         /*
             const searchManager = new Microsoft.Maps.Search.SearchManager(map);
                 var requestOptions = {
@@ -93,6 +95,6 @@ export class JourneyDetailsComponent implements OnInit {
     }
 
     changeMarker() {
-        console.log('Hmmm');
+      this.logService.log('Hmmm');
     }
 }

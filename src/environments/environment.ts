@@ -8,7 +8,10 @@ export const environment = {
   tenant: 'bcserverlessdemo.onmicrosoft.com',
   clientID: 'baf03ca9-a5d0-4862-9302-503603cea2af',
   signUpSignInPolicy: 'B2C_1_SISU2',
-  b2cScopes: ['baf03ca9-a5d0-4862-9302-503603cea2af']
+  b2cScopes: ['baf03ca9-a5d0-4862-9302-503603cea2af'],
+  appInsights: {
+    instrumentationKey: 'f01e9ecc-db4f-4a88-8c48-afc03ad69719'
+  },
 };
 
 /*

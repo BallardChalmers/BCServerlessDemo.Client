@@ -23,13 +23,6 @@ export class MsalService {
 
     public login(): void {
         this.clientApplication.loginRedirect(environment.b2cScopes);
-        /*
-                this.clientApplication.loginPopup(environment.b2cScopes).then(response => {
-                    console.log(response);
-                }).catch(error => {
-                    console.log('Error lgoging in: ' + error);
-                });
-                */
     }
 
     public logout(): void {
